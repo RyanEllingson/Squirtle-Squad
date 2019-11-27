@@ -1,24 +1,28 @@
-const destEl = document.querySelector(".search-js");
+// Select all the input fields with the class name of "search-js"
+const destEls = document.querySelectorAll(".search-js");
+// Select the submit button
 const buttonEl = document.getElementById("button");
-let queryURL;
 
-buttonEl.addEventListener("click",function() {
-    const startLocation = startEl.value;
-    const endLocation = endEl.value;
-    const midDest1 = midDest1El.value;
-    const midDest2 = midDest2El.value;
-    const midDest3 = midDest3El.value;
-    const midDest4 = midDest4El.value;
-    const midDest5 = midDest5El.value;
-    //  perform mapquest call for selected locations
-    //  display brewery information
-    //  display map
-});
-// Get the breweries at the a certain location
-const getBreweries = (currentLocation) => {
-    queryURL = "https://api.openbrewerydb.org/breweries?by_city=" + currentLocation;
+// Function that will grab all the input values from the destEls array
+function getLocationInputs(){
+    for (let i = 0; i < destEls.length; i++) {
+        const currentDest = destEls[i].value;
+        // Call getBreweries function to get the breweries at the current destination in the array
+        getBreweries(currentDest);    
+    }
+}
+
+// Add event listener to the submit button and when clicked run the getLocationInputs function
+buttonEl.addEventListener("click", getLocationInputs);
+
+// Function that will find all the breweries at a certain location by using openBreweryDB's API
+function getBreweries(currentLocation) {
+    let queryURL = "https://api.openbrewerydb.org/breweries?by_city=" + currentLocation;
     axios.get(queryURL)
     .then(function(response){
         console.log(response.data);
-    });
+    });       
 }
+
+// Problems right now:
+// 1. The response is returning cities in Birmingham????
