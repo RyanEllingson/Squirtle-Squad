@@ -2,6 +2,7 @@
 const destEls = document.querySelectorAll(".search-js");
 // Select the submit button
 const buttonEl = document.getElementById("button");
+const mapEl = document.getElementById("map-img");
 
 // Function that will grab all the input values from the destEls array
 function getLocationInputs(){
@@ -41,7 +42,9 @@ function getRoute(locations) {
     axios.get(queryURL)
     .then(function(response) {
         console.log(response);
+        const mapURL = "https://www.mapquestapi.com/staticmap/v5/map?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&session=" + response.data.route.sessionId;
+        mapEl.setAttribute("src",mapURL);
     });
 }
 
-getRoute(["Minneapolis, MN","Hudson, WI","Madison, WI"]);
+getRoute(["Minneapolis, MN","Green Bay, WI","Orland Park, IL"]);
