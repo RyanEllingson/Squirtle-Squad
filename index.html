@@ -4,30 +4,15 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="ie=edge" http-equiv="X-UA-Compatible">
-
         <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bulma-extensions@4.0.0/dist/css/bulma-extensions.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Pacifico&display=swap" rel="stylesheet">
-
         <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/bulma-prefers-dark" rel="stylesheet" type="text/css"/>
         <title>Document</title>
     </head>
     <body>
-
-        <!-- <section>
-                    <nav aria-label="main navigation" class="navbar" role="navigation">
-                        <div class="navbar-brand" style="text-align:center;">
-                            <a class="navbar-item" href="">
-                                <img alt="" height="50" src="assets/images/mug.png" width="50">
-                            </a>
-                            <h1 class="level">
-                                Brew Cruze
-                            </h1>
-                        </div>
-                    </nav>
-                </section> -->
-
         <section class="hero">
             <div class="hero-body">
                 <div class="container">
@@ -38,13 +23,11 @@
                 </div>
             </div>
         </section>
-
-        
         <section>
             <div class="container is-fluid">
                 <div class="columns">
                     <div class="column">
-                        <div class="box cityinput">
+                        <div class="box brew-zone">
                             <input class="input is-primary search-js mt-1" placeholder="Starting Location E.g. Minneapolis, MN" type="text">
                             <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Edina, MN" type="text">
                             <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Bloomington, MN" type="text">
@@ -55,9 +38,8 @@
                             <button class="button is-primary mt-1" id="button">Submit</button>
                         </div>
                     </div>
-
                     <div class="column">
-                        <div class="box">
+                        <div class="box brew-zone">
                             <div class="level">
                                 <a href="http://excelsiorbrew.com/">Breweries go here</a>
                                 <div class="field">
@@ -121,14 +103,11 @@
                                     <label for="toggle8">Select Brewery</label>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-
         <section>
             <div class="container is-fluid">
                 <div class="columns">
@@ -136,7 +115,7 @@
                         <div class="box">
                             <div class="container">
                                 <h1 class="map-zone-title">Map Zone</h1>
-                                <p class="map-picture-p"><img id="map-img" alt="Map" class="responsive" height="400" src="assets/images/map.jpg" width="600"></p>
+                                <p class="map-picture-p"><img alt="Map" class="responsive" height="400" id="map-img" src="assets/images/map.jpg" width="600"></p>
                             </div>
                         </div>
                     </div>
