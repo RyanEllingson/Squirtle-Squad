@@ -2,3 +2,28 @@ html, body{
     padding: 0;
     margin: 0;
 }
+
+.title {
+    font-family: 'Pacifico', cursive;
+}
+
+.is-divider {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.city-input {
+    height: 350px;
+}
+
+.box {
+    overflow: auto;
+    height: 350px;
+}
+
+.map-zone-title {
+    text-align: center;
+}
+
+.map-picture-p {
+    text-align: center;
+}
