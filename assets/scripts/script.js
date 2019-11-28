@@ -26,3 +26,22 @@ function getBreweries(currentLocation) {
 
 // Problems right now:
 // 1. The response is returning cities in Birmingham????
+
+function getRoute(locations) {
+    let locationString = "";
+    for (i=0; i<locations.length; i++) {
+        locationString = locationString + "'" + locations[i] + "'";
+        if (i<locations.length -1) {
+            locationString = locationString + ",";
+        }
+    }
+    locationString = locationString.replace(/\s+/g, '');
+    console.log(locationString);
+    const queryURL = "https://www.mapquestapi.com/directions/v2/optimizedroute?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&json={'locations':[" + locationString + "]}";
+    axios.get(queryURL)
+    .then(function(response) {
+        console.log(response);
+    });
+}
+
+getRoute(["Minneapolis, MN","Hudson, WI","Madison, WI"]);
