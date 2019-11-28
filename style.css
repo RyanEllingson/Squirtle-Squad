@@ -1,0 +1,13 @@
+.cityinput {
+    padding-top: 50px;
+    margin-top: 50px;
+}
+.map {
+    margin-left: auto;
+    marginright: auto;
+    width: 100%;
+}
+.responsive {
+    width: 100%;
+    height: auto;
+  }
