@@ -37,7 +37,11 @@ function getRoute(locations) {
     }
     locationString = locationString.replace(/\s+/g, '');
     console.log(locationString);
-    const queryURL = "https://www.mapquestapi.com/directions/v2/optimizedroute?key=KEYhttp://www.mapquestapi.com/directions/v2/optimizedroute?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&json={'locations':[" + locationString + "]}";
+    const queryURL = "https://www.mapquestapi.com/directions/v2/optimizedroute?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&json={'locations':[" + locationString + "]}";
+    axios.get(queryURL)
+    .then(function(response) {
+        console.log(response);
+    });
 }
 
-getRoute(["Minneapolis, MN","Madison, WI"]);
+getRoute(["Minneapolis, MN","Hudson, WI","Madison, WI"]);
