@@ -5,6 +5,8 @@ const buttonEl = document.getElementById("button");
 const mapEl = document.getElementById("map-img");
 const stateSymbols = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 const stateNames = ["alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new_hampshire","new_jersey","new_york","north_carolina","north_dakota","ohio","oklahoma","oregon","pennsylvania","rhode_island","south_carolina","south_dakota","tennessee","texas","utah","vermont","virginia","washington","west_virginia","wisconsin","wyoming"];
+const breweryDivEl = document.getElementById("brewery-container");
+
 
 // Function transforms state symbol returned by mapquest to state name understandable by brewery API
 function convertState(stateAbbv) {
@@ -13,6 +15,7 @@ function convertState(stateAbbv) {
 
 // Function that will grab all the input values from the destEls array
 function getLocationInputs(){
+    clearBreweryList();
     let locationArray = [];
     for (let i = 0; i < destEls.length; i++) {
         const currentDest = destEls[i].value;
@@ -45,7 +48,38 @@ function getBreweries(currentLocation) {
     axios.get(queryURL)
     .then(function(response){
         console.log(response.data);
+        for (let i = 0; i < response.data.length; i++) {
+            console.log(response.data[i]);
+            // Create a new div with a class of "level"
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("level");
+            // Create a new a tag with innerHTML of whatever Brewery name the loop is currently on
+            const breweryNameTag = document.createElement("a");
+            breweryNameTag.innerHTML = response.data[i].name;
+            // Add an href attribute onto the a tag with the link leading to the brewery's website
+            breweryNameTag.setAttribute("href", response.data[i].website_url);
+            breweryNameTag.setAttribute("target", "_blank");
+            // Add a styling class onto the A tag
+            breweryNameTag.classList.add("brewery-link");
+            // Add new a tag onto the new div with a class of level
+            newDiv.append(breweryNameTag);
+            // Create new p tage that will contain all the location and contact information about each brewery
+            const informationTag = document.createElement("p");
+            informationTag.classList.add("brewery-info");
+            // Add information to display to the p tag
+            informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+            // Add the p tag to the new div
+            newDiv.append(informationTag);
+            // Add new level div to the div with an id of brewery-container
+            breweryDivEl.append(newDiv);
+        }
     });       
+}
+
+function clearBreweryList(){
+    while(breweryDivEl.firstChild){
+        breweryDivEl.removeChild(breweryDivEl.firstChild);
+    }
 }
 
 
@@ -65,4 +99,8 @@ function getRoute(locations) {
         const mapURL = "https://www.mapquestapi.com/staticmap/v5/map?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&session=" + response.data.route.sessionId;
         mapEl.setAttribute("src",mapURL);
     });
+}
+
+function populateBreweryFields(){
+    
 }

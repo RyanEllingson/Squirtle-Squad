@@ -3,6 +3,10 @@ html, body{
     margin: 0;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: black;
@@ -27,8 +31,29 @@ html, body{
 
 .map-zone-title {
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .map-picture-p {
     text-align: center;
+}
+
+.brewery-info{
+    color: white;
+    font-family: 'Copse', serif;
+    font-size: 12px;
+}
+
+.brewery-link {
+    color: white;
+    text-decoration: none;
+    padding: .4rem;
+    border-radius: 4px;
+    font-family: 'Copse', serif;
+}
+
+a.brewery-link:hover {
+    background: white;
+    color: black;
+    transition: background 1.5s;
 }
