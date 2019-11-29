@@ -31,10 +31,17 @@ a:hover{
 
 .map-zone-title {
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .map-picture-p {
     text-align: center;
+}
+
+.brewery-info{
+    color: white;
+    font-family: 'Copse', serif;
+    font-size: 12px;
 }
 
 .brewery-link {

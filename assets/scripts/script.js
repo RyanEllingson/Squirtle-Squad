@@ -15,6 +15,7 @@ function convertState(stateAbbv) {
 
 // Function that will grab all the input values from the destEls array
 function getLocationInputs(){
+    clearBreweryList();
     let locationArray = [];
     for (let i = 0; i < destEls.length; i++) {
         const currentDest = destEls[i].value;
@@ -62,10 +63,23 @@ function getBreweries(currentLocation) {
             breweryNameTag.classList.add("brewery-link");
             // Add new a tag onto the new div with a class of level
             newDiv.append(breweryNameTag);
+            // Create new p tage that will contain all the location and contact information about each brewery
+            const informationTag = document.createElement("p");
+            informationTag.classList.add("brewery-info");
+            // Add information to display to the p tag
+            informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+            // Add the p tag to the new div
+            newDiv.append(informationTag);
             // Add new level div to the div with an id of brewery-container
             breweryDivEl.append(newDiv);
         }
     });       
+}
+
+function clearBreweryList(){
+    while(breweryDivEl.firstChild){
+        breweryDivEl.removeChild(breweryDivEl.firstChild);
+    }
 }
 
 
