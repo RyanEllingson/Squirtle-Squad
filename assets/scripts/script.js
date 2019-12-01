@@ -6,6 +6,7 @@ const mapEl = document.getElementById("map-img");
 const stateSymbols = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 const stateNames = ["alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new_hampshire","new_jersey","new_york","north_carolina","north_dakota","ohio","oklahoma","oregon","pennsylvania","rhode_island","south_carolina","south_dakota","tennessee","texas","utah","vermont","virginia","washington","west_virginia","wisconsin","wyoming"];
 const breweryDivEl = document.getElementById("brewery-container");
+const directionsDivEl = document.getElementById("directions-container");
 
 
 // Function transforms state symbol returned by mapquest to state name understandable by brewery API
@@ -24,7 +25,7 @@ function getLocationInputs(){
             let queryURL = "http://www.mapquestapi.com/search/v2/radius?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&maxMatches=1&origin=" + currentDest;
             axios.get(queryURL)
             .then(function(response) {
-                console.log(response);
+                // console.log(response);
                 const cityState = [response.data.origin.adminArea5,convertState(response.data.origin.adminArea3)];
                 // Call getBreweries function to get the breweries at the current destination in the array
                 getBreweries(cityState); 
@@ -49,7 +50,7 @@ function getBreweries(currentLocation) {
     .then(function(response){
         console.log(response.data);
         for (let i = 0; i < response.data.length; i++) {
-            console.log(response.data[i]);
+            // console.log(response.data[i]);
             // Create a new div with a class of "level"
             const newDiv = document.createElement("div");
             newDiv.classList.add("level");
@@ -85,12 +86,13 @@ function clearBreweryList(){
 
 function getRoute(locations) {
     let locationString = "";
-    for (i=0; i<locations.length; i++) {
+    for (let i=0; i<locations.length; i++) {
         locationString = locationString + "'" + locations[i] + "'";
         if (i<locations.length -1) {
             locationString = locationString + ",";
         }
     }
+    // Remove spaces from locations for use in query URL
     locationString = locationString.replace(/\s+/g, '');
     const queryURL = "https://www.mapquestapi.com/directions/v2/optimizedroute?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&json={'locations':[" + locationString + "]}";
     axios.get(queryURL)
@@ -98,6 +100,22 @@ function getRoute(locations) {
         console.log(response);
         const mapURL = "https://www.mapquestapi.com/staticmap/v5/map?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&session=" + response.data.route.sessionId;
         mapEl.setAttribute("src",mapURL);
+        directionsDivEl.innerHTML = "";
+        for (let i=0; i<response.data.route.legs.length; i++) {
+            for (let j=0; j<response.data.route.legs[i].maneuvers.length; j++) {
+                const directionEl = document.createElement("div");
+                directionEl.setAttribute("class","control");
+                const textEl = document.createElement("textarea");
+                textEl.setAttribute("class","textarea");
+                textEl.setAttribute("readonly",true);
+                textEl.innerHTML = response.data.route.legs[i].maneuvers[j].narrative;
+                textEl.addEventListener("click", function() {
+                    mapEl.setAttribute("src",response.data.route.legs[i].maneuvers[j].mapUrl)
+                });
+                directionEl.append(textEl);
+                directionsDivEl.append(directionEl);
+            }
+        }
     });
 }
 
