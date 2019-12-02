@@ -106,7 +106,8 @@ function getRoute(locations) {
                 const directionEl = document.createElement("div");
                 directionEl.setAttribute("class","control");
                 const textEl = document.createElement("textarea");
-                textEl.setAttribute("class","textarea mt-2");
+                textEl.setAttribute("class","textarea mt-2 has-text-centered has-fixed-size");
+                textEl.setAttribute("rows",2)
                 textEl.setAttribute("readonly",true);
                 textEl.innerHTML = response.data.route.legs[i].maneuvers[j].narrative;
                 textEl.addEventListener("click", function() {
