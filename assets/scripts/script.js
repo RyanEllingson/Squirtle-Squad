@@ -7,7 +7,9 @@ const stateSymbols = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID
 const stateNames = ["alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new_hampshire","new_jersey","new_york","north_carolina","north_dakota","ohio","oklahoma","oregon","pennsylvania","rhode_island","south_carolina","south_dakota","tennessee","texas","utah","vermont","virginia","washington","west_virginia","wisconsin","wyoming"];
 const breweryDivEl = document.getElementById("brewery-container");
 const directionsDivEl = document.getElementById("directions-container");
+const breweryButton = document.getElementById("brewery-button");
 
+let locationArray = [];
 
 // Function transforms state symbol returned by mapquest to state name understandable by brewery API
 function convertState(stateAbbv) {
@@ -17,10 +19,13 @@ function convertState(stateAbbv) {
 // Function that will grab all the input values from the destEls array
 function getLocationInputs(){
     clearBreweryList();
-    let locationArray = [];
+    breweryButton.classList.remove("hidden");
+    locationArray = [];
     for (let i = 0; i < destEls.length; i++) {
         const currentDest = destEls[i].value;
         if (currentDest !== "") {
+            locationArray.push(currentDest);
+            let currentIndex = locationArray.length - 1;
             // Extract city name from user input and use in brewery get request
             let queryURL = "http://www.mapquestapi.com/search/v2/radius?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&maxMatches=1&origin=" + currentDest;
             axios.get(queryURL)
@@ -28,11 +33,11 @@ function getLocationInputs(){
                 // console.log(response);
                 const cityState = [response.data.origin.adminArea5,convertState(response.data.origin.adminArea3)];
                 // Call getBreweries function to get the breweries at the current destination in the array
-                getBreweries(cityState); 
+                getBreweries(cityState,currentIndex); 
             });
           
 
-            locationArray.push(currentDest);
+            
         } 
     }
     getRoute(locationArray);
@@ -42,16 +47,18 @@ function getLocationInputs(){
 buttonEl.addEventListener("click", getLocationInputs);
 
 // Function that will find all the breweries at a certain location by using openBreweryDB's API
-function getBreweries(currentLocation) {
+function getBreweries(currentLocation, locationIndex) {
     const city = currentLocation[0];
     const state = currentLocation[1];
     let queryURL = "https://api.openbrewerydb.org/breweries?by_city=" + city + "&by_state=" + state;
     axios.get(queryURL)
     .then(function(response){
-        console.log(response.data);
+        // console.log(response.data);
         for (let i = 0; i < response.data.length; i++) {
             // console.log(response.data[i]);
             // Create a new div with a class of "level"
+            let latLongString = response.data[i].latitude + "," + response.data[i].longitude;
+            // console.log(latLongString);
             const newDiv = document.createElement("div");
             newDiv.classList.add("level");
             // Create a new a tag with innerHTML of whatever Brewery name the loop is currently on
@@ -69,13 +76,17 @@ function getBreweries(currentLocation) {
             divCheckBox.classList.add("field");
 
             const checkBoxInput = document.createElement("input");
-            checkBoxInput.classList.add("switch", "is-rtl", "is-unchecked");
-            checkBoxInput.setAttribute("id", "toggle"[i]);
+            checkBoxInput.classList.add("switch", "is-rtl");
+            checkBoxInput.setAttribute("id", "toggle" + i + response.data[i].city);
             checkBoxInput.setAttribute("name", "toggle");
             checkBoxInput.setAttribute("type", "checkbox");
+            checkBoxInput.setAttribute("value","")
+            checkBoxInput.setAttribute("data-city",locationIndex);
+            checkBoxInput.setAttribute("data-latlong",latLongString);
+            console.log(checkBoxInput.getAttribute("data-latlong"));
 
             const checkBoxLabel = document.createElement("label");
-            checkBoxLabel.setAttribute("for", "toggle"[i]);
+            checkBoxLabel.setAttribute("for", "toggle"+ i + response.data[i].city);
             checkBoxLabel.innerHTML = "";
 
             divCheckBox.append(checkBoxInput);
@@ -93,6 +104,36 @@ function getBreweries(currentLocation) {
             // Add new info tag to the newly created div
             breweryDivEl.append(informationTag);
         }
+        breweryButton.addEventListener("click",function() {
+            const breweryToggleEls = document.querySelectorAll(".switch");
+            console.log(breweryToggleEls);
+            
+            let locationArrayArray = [];
+            for (let i = 0; i<locationArray.length; i++) {
+                let locationObj = {};
+                let locArray = [];
+                locArray.push(locationArray[i])
+                locationObj.locations = locArray;
+                console.log(locationObj);
+                locationArrayArray.push(locationObj);
+            }
+            console.log(locationArrayArray);
+            for (let i=0; i<breweryToggleEls.length; i++) {
+                console.log(breweryToggleEls[i].checked);
+                if (breweryToggleEls[i].checked) {
+                    let toggleIndex = breweryToggleEls[i].getAttribute("data-city");
+                    locationArrayArray[toggleIndex].locations.push(breweryToggleEls[i].getAttribute("data-latlong"));
+                }
+            }
+            let newLocationArray = [];
+            for (let i=0; i<locationArrayArray.length; i++) {
+                console.log(locationArrayArray[i].locations);
+                newLocationArray = newLocationArray.concat(locationArrayArray[i].locations);
+            }
+            console.log(newLocationArray);
+            // console.log(locationArrayArray);
+            getRoute(newLocationArray);
+        });
     });       
 }
 
@@ -113,10 +154,11 @@ function getRoute(locations) {
     }
     // Remove spaces from locations for use in query URL
     locationString = locationString.replace(/\s+/g, '');
+    console.log(locationString);
     const queryURL = "https://www.mapquestapi.com/directions/v2/optimizedroute?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&json={'locations':[" + locationString + "]}";
     axios.get(queryURL)
     .then(function(response) {
-        console.log(response);
+        // console.log(response);
         const mapURL = "https://www.mapquestapi.com/staticmap/v5/map?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&session=" + response.data.route.sessionId;
         mapEl.setAttribute("src",mapURL);
         directionsDivEl.innerHTML = "";

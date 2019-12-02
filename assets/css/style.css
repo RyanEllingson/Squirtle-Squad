@@ -3,13 +3,12 @@ html, body{
     margin: 0;
 }
 
-
 a:hover{
     text-decoration: none;
 }
 
-div > .level {
-    margin-bottom: 0;
+.hidden {
+    display: none;
 }
 
 @media (prefers-color-scheme: dark) {
