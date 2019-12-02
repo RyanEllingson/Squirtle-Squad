@@ -8,6 +8,10 @@ a:hover{
     text-decoration: none;
 }
 
+div > .level {
+    margin-bottom: 0;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: black;
@@ -16,6 +20,7 @@ a:hover{
         background-color: black;
     }
     .brewery-info{
+        padding-left: .5rem;
         color: white;
         font-family: 'Copse', serif;
         font-size: 12px;
@@ -44,6 +49,7 @@ a:hover{
         background-color: white;
     }
     .brewery-info{
+        padding-left: .5rem;
         color: black;
         font-family: 'Copse', serif;
         font-size: 12px;

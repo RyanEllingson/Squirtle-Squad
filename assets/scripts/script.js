@@ -29,7 +29,7 @@ function getLocationInputs(){
                 const cityState = [response.data.origin.adminArea5,convertState(response.data.origin.adminArea3)];
                 // Call getBreweries function to get the breweries at the current destination in the array
                 getBreweries(cityState); 
-            })
+            });
           
 
             locationArray.push(currentDest);
@@ -64,15 +64,34 @@ function getBreweries(currentLocation) {
             breweryNameTag.classList.add("brewery-link");
             // Add new a tag onto the new div with a class of level
             newDiv.append(breweryNameTag);
+
+            const divCheckBox = document.createElement("div");
+            divCheckBox.classList.add("field");
+
+            const checkBoxInput = document.createElement("input");
+            checkBoxInput.classList.add("switch", "is-rtl", "is-unchecked");
+            checkBoxInput.setAttribute("id", "toggle"[i]);
+            checkBoxInput.setAttribute("name", "toggle");
+            checkBoxInput.setAttribute("type", "checkbox");
+
+            const checkBoxLabel = document.createElement("label");
+            checkBoxLabel.setAttribute("for", "toggle"[i]);
+            checkBoxLabel.innerHTML = "";
+
+            divCheckBox.append(checkBoxInput);
+            divCheckBox.append(checkBoxLabel);
+            newDiv.append(divCheckBox);
+
             // Create new p tage that will contain all the location and contact information about each brewery
             const informationTag = document.createElement("p");
             informationTag.classList.add("brewery-info");
             // Add information to display to the p tag
             informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
-            // Add the p tag to the new div
-            newDiv.append(informationTag);
+            informationTag.classList.add("level");
             // Add new level div to the div with an id of brewery-container
             breweryDivEl.append(newDiv);
+            // Add new info tag to the newly created div
+            breweryDivEl.append(informationTag);
         }
     });       
 }
