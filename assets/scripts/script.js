@@ -118,7 +118,3 @@ function getRoute(locations) {
         }
     });
 }
-
-function populateBreweryFields(){
-    
-}

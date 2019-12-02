@@ -13,7 +13,54 @@ a:hover{
     }
     .is-divider[data-content]::after {
         background-color: black;
-      }   
+    }
+    .brewery-info{
+        color: white;
+        font-family: 'Copse', serif;
+        font-size: 12px;
+    }
+    
+    .brewery-link {
+        color: white;
+        text-decoration: none;
+        padding: .4rem;
+        border-radius: 4px;
+        font-family: 'Copse', serif;
+    }
+    
+    a.brewery-link:hover {
+        background: white;
+        color: black;
+        transition: background 1.5s;
+    }   
+}
+
+@media (prefers-color-scheme: light){
+    body{
+        background: white;
+    }
+    .is-divider[data-content]::after {
+        background-color: white;
+    }
+    .brewery-info{
+        color: black;
+        font-family: 'Copse', serif;
+        font-size: 12px;
+    }
+    
+    .brewery-link {
+        color: black;
+        text-decoration: none;
+        padding: .4rem;
+        border-radius: 4px;
+        font-family: 'Copse', serif;
+    }
+    
+    a.brewery-link:hover {
+        background: black;
+        color: white;
+        transition: background 1.5s;
+    }
 }
 
 .title {
@@ -39,25 +86,6 @@ a:hover{
     text-align: center;
 }
 
-.brewery-info{
-    color: white;
-    font-family: 'Copse', serif;
-    font-size: 12px;
-}
-
-.brewery-link {
-    color: white;
-    text-decoration: none;
-    padding: .4rem;
-    border-radius: 4px;
-    font-family: 'Copse', serif;
-}
-
-a.brewery-link:hover {
-    background: white;
-    color: black;
-    transition: background 1.5s;
-}
 .direction-zone {
     overflow-y: auto;
     overflow-wrap: break-word;
