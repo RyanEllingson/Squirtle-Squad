@@ -1,6 +1,8 @@
 # Squirtle-Squad
 
 Brew Cruze
+![mug logo](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/mug.png)
+
 Live site:
  
 Description
@@ -11,7 +13,7 @@ The usage of this application is for the general public to easily locate breweri
  
  
 Images:
-![Starting layout concept:](assets\pics\104499.jpg)
+![Starting layout concept](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/Screenshot%20(20).png)
  
  
  
@@ -56,6 +58,12 @@ Mapquest did offer turn by turn navigation, but not real time navigation, someth
  
 Successes:
 Our team was able to effectively work in a cohesive and diplomatic manner. With the utilization of Slack as a communication platform, we were able to discuss strengths and weakness of each member and then formally assign tasks via Github During class hours, we had mini caucus moments to discuss where we were at in our project, any individual setbacks/delays and also ideas about what we wanted to still incorporate. Although the personalities in our group were quite eclectic; the open and accepting environment was pretty much inherent in nature, and this led to the honest discussion of skills and vulnerabilities. It has been a pleasure to see our ideas come to fruition.
+
+Roadmap:
+With funding and extra time, additional user features such as, Yelp reviews, Goolge Maps and Air B&B would be included. 
+Funding resources could come from commercial advertisements and user donations.  
+Our reasoning behind the specific enterprises listed are as follows; Yelp reviews for ratings. Google Maps for real time navigation and different overlay options. AirB&B for overnight options and other recreational activities. Our goal would be to have the user be able to design their vacation/trip in its entirety from our app. 
+
  
 Acknowledgements:
 We created this code based on the project requirements by Trilogy Education Services. We have included citations in the form of comments throughout the html and javascript files.
@@ -64,4 +72,3 @@ License
 MIT
  
  
-
