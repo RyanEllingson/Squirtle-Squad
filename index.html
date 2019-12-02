@@ -17,7 +17,7 @@
         <section class="hero">
             <div class="hero-body">
                 <div class="container">
-                    <h1 class="title has-text-centered">
+                    <h1 class="title has-text-centered content">
                         Brew Cruze
                     </h1>
                     <div class="is-divider" data-content="Experiencing America One Sip at a Time"></div>
@@ -29,81 +29,21 @@
                 <div class="columns">
                     <div class="column">
                         <div class="box brew-zone">
-                            <input class="input is-primary search-js mt-1" placeholder="Starting Location E.g. Minneapolis, MN" type="text">
-                            <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Edina, MN" type="text">
-                            <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Bloomington, MN" type="text">
-                            <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Hopkins, MN" type="text">
-                            <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Brainer, MN" type="text">
-                            <input class="input is-warning search-js mt-1" placeholder="Waypoint E.g. Biwabik, MN" type="text">
-                            <input class="input is-danger search-js mt-1" placeholder="End Location E.g. Duluth, MN" type="text">
-                            <button class="button is-primary mt-1" id="button">Submit</button>
+                            <h1 class="map-zone-title">Plan Your Trip</h1>
+                            <input class="input is-primary search-js mt-2" placeholder="Starting Location E.g. Minneapolis, MN" type="text">
+                            <input class="input is-warning search-js mt-2" placeholder="Waypoint E.g. Edina, MN" type="text">
+                            <input class="input is-warning search-js mt-2" placeholder="Waypoint E.g. Bloomington, MN" type="text">
+                            <input class="input is-warning search-js mt-2" placeholder="Waypoint E.g. Hopkins, MN" type="text">
+                            <input class="input is-warning search-js mt-2" placeholder="Waypoint E.g. Brainer, MN" type="text">
+                            <input class="input is-warning search-js mt-2" placeholder="Waypoint E.g. Biwabik, MN" type="text">
+                            <input class="input is-danger search-js mt-2" placeholder="End Location E.g. Duluth, MN" type="text">
+                            <button class="button is-outlined mt-1" id="button">Submit</button>
                         </div>
                     </div>
                     <div class="column">
-                        <div class="box brew-zone" id="brewery-container">
-                            <!-- <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle" name="toggle" type="checkbox">
-                                    <label for="toggle">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle1" name="toggle1" type="checkbox">
-                                    <label for="toggle1">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle2" name="toggle2" type="checkbox">
-                                    <label for="toggle2">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle3" name="toggle3" type="checkbox">
-                                    <label for="toggle3">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle4" name="toggle4" type="checkbox">
-                                    <label for="toggle4">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle5" name="toggle5" type="checkbox">
-                                    <label for="toggle5">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle6" name="toggle6" type="checkbox">
-                                    <label for="toggle6">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://excelsiorbrew.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle7" name="toggle7" type="checkbox">
-                                    <label for="toggle7">Select Brewery</label>
-                                </div>
-                            </div>
-                            <div class="level">
-                                <a href="http://www.boomislandbrewing.com/">Breweries go here</a>
-                                <div class="field">
-                                    <input class="switch is-rtl is-unchecked" id="toggle8" name="toggle8" type="checkbox">
-                                    <label for="toggle8">Select Brewery</label>
-                                </div>
-                            </div> -->
+                        <div class="box brew-zone">
+                            <h1 class="map-zone-title">Breweries</h1>
+                            <div id="brewery-container"></div>
                         </div>
                     </div>
                 </div>
@@ -112,18 +52,16 @@
         <section>
             <div class="container is-fluid">
                 <div class="columns">
-                    <div class="column">
-                        <div class="box">
-                            <div class="container">
-                                <h1 class="map-zone-title">Map Zone</h1>
-                                <p class="map-picture-p"><img alt="Map" class="responsive" height="400" id="map-img" src="assets/images/map.jpg" width="600"></p>
-                            </div>
+                    <div class="column is-half">
+                        <div class="box mt-3 direction-zone">
+                            <h1 class="map-zone-title">Map</h1>
+                            <p class="map-picture-p"><img alt="Map" class="responsive" height="400" id="map-img" src="assets/images/map.jpg" width="600"></p>
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="box">
-                            <h1>Directions</h1>
-                            <div id="directions-container" class="container"></div>
+                    <div class="column is-half">
+                        <div class="box mt-3 direction-zone">
+                            <h1 class="map-zone-title">Directions</h1>
+                            <div id="directions-container"></div>
                         </div>
                     </div>
                 </div>

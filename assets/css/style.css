@@ -26,10 +26,11 @@ a:hover{
 
 .brew-zone {
     overflow: auto;
-    height: 370px;
+    height: 450px;
 }
 
 .map-zone-title {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -56,4 +57,9 @@ a.brewery-link:hover {
     background: white;
     color: black;
     transition: background 1.5s;
+}
+.direction-zone {
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    height: 450px;
 }
