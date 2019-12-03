@@ -76,7 +76,7 @@ function getBreweries(currentLocation, locationIndex) {
             divCheckBox.classList.add("field");
 
             const checkBoxInput = document.createElement("input");
-            checkBoxInput.classList.add("switch", "is-rtl");
+            checkBoxInput.classList.add("switch", "is-rtl", "is-outlined");
             checkBoxInput.setAttribute("id", "toggle" + i + response.data[i].city);
             checkBoxInput.setAttribute("name", "toggle");
             checkBoxInput.setAttribute("type", "checkbox");
