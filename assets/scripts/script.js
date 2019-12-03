@@ -83,7 +83,7 @@ function getBreweries(currentLocation, locationIndex) {
             checkBoxInput.setAttribute("value","")
             checkBoxInput.setAttribute("data-city",locationIndex);
             checkBoxInput.setAttribute("data-latlong",latLongString);
-            console.log(checkBoxInput.getAttribute("data-latlong"));
+            // console.log(checkBoxInput.getAttribute("data-latlong"));
 
             const checkBoxLabel = document.createElement("label");
             checkBoxLabel.setAttribute("for", "toggle"+ i + response.data[i].city);
@@ -106,7 +106,7 @@ function getBreweries(currentLocation, locationIndex) {
         }
         breweryButton.addEventListener("click",function() {
             const breweryToggleEls = document.querySelectorAll(".switch");
-            console.log(breweryToggleEls);
+            // console.log(breweryToggleEls);
             
             let locationArrayArray = [];
             for (let i = 0; i<locationArray.length; i++) {
@@ -114,12 +114,12 @@ function getBreweries(currentLocation, locationIndex) {
                 let locArray = [];
                 locArray.push(locationArray[i])
                 locationObj.locations = locArray;
-                console.log(locationObj);
+                // console.log(locationObj);
                 locationArrayArray.push(locationObj);
             }
-            console.log(locationArrayArray);
+            // console.log(locationArrayArray);
             for (let i=0; i<breweryToggleEls.length; i++) {
-                console.log(breweryToggleEls[i].checked);
+                // console.log(breweryToggleEls[i].checked);
                 if (breweryToggleEls[i].checked) {
                     let toggleIndex = breweryToggleEls[i].getAttribute("data-city");
                     locationArrayArray[toggleIndex].locations.push(breweryToggleEls[i].getAttribute("data-latlong"));
@@ -127,10 +127,10 @@ function getBreweries(currentLocation, locationIndex) {
             }
             let newLocationArray = [];
             for (let i=0; i<locationArrayArray.length; i++) {
-                console.log(locationArrayArray[i].locations);
+                // console.log(locationArrayArray[i].locations);
                 newLocationArray = newLocationArray.concat(locationArrayArray[i].locations);
             }
-            console.log(newLocationArray);
+            // console.log(newLocationArray);
             // console.log(locationArrayArray);
             getRoute(newLocationArray);
         });
@@ -154,7 +154,7 @@ function getRoute(locations) {
     }
     // Remove spaces from locations for use in query URL
     locationString = locationString.replace(/\s+/g, '');
-    console.log(locationString);
+    // console.log(locationString);
     const queryURL = "https://www.mapquestapi.com/directions/v2/optimizedroute?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&json={'locations':[" + locationString + "]}";
     axios.get(queryURL)
     .then(function(response) {
