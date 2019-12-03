@@ -3,10 +3,10 @@
 Brew Cruze
 ![mug logo](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/mug.png)
 
-Live site:
+Live site: https://ryanellingson.github.io/Squirtle-Squad/
  
 Description
-This repository is for creating an application to locate breweries while traveling. This is our first group project for our web development program. The Brew Cruz application will locate breweries in between a starting location and ending location, with waypoints as an options. The user has the ability to input their current location, final destination and search results will produce a list of breweries (URL included when applicable) that are within those parameters. Additional functionality includes a map identifying the brewery results, turn by turn navigation with zoom capabilities and a responsive interface.
+This repository was for creating an application to locate breweries while traveling. This is our first group project for our web development program. The Brew Cruz application will locate breweries in-between a starting location and ending location, with waypoints as an options. The user has the ability to input their current location, final destination and search results will produce a list of breweries (URL included when applicable) that are within those parameters. Additional functionality includes a map identifying the brewery results, turn by turn navigation with zoom capabilities and a responsive interface.
  
 Usage:
 The usage of this application is for the general public to easily locate breweries on their travel route.
@@ -17,7 +17,7 @@ Images:
  
  
  
-![Finished view:]
+![Finished view:] ()
  
  
  
@@ -41,11 +41,11 @@ City
 state
  
         
-Contributing
+Contributions:
 For our first group project, we had a team of five members: Jesse Edwards - Project Manager, AyDy Burling - Designer, Samantha Sengsouvanh - Designer, Austin Schlander - Web Developer, Ryan Ellingson - Web Developer.
  
 Challenges:
-The initial germination of the project proved to be the most difficult. Due to situational constraints (i.e point in curriculum, funding and other lack of resources), we as a group, were limited to select APIs. Consequently, some additional user functionality (referenced further in "roadmap" section) are currently attainable, thus limiting the scope of the user experience.
+The initial germination of the project proved to be the most difficult. Due to situational constraints (i.e point in curriculum, funding and other lack of resources), we as a group, were limited to select APIs. Consequently, some additional user functionality (referenced further in "roadmap" section) are currently unattainable, thus limiting the scope of the user experience.
  
 Utilizing a new CSS framework took some adjustment, concepts such as row and column manipulation as well as getting familiar with the various components. Since Bootstrap 4.4 was our starting reference point, Bulma did not prove to be much different but, as expected, there were some cosmetic differences.
  
@@ -57,7 +57,7 @@ Mapquest did offer turn by turn navigation, but not real time navigation, someth
  
  
 Successes:
-Our team was able to effectively work in a cohesive and diplomatic manner. With the utilization of Slack as a communication platform, we were able to discuss strengths and weakness of each member and then formally assign tasks via Github During class hours, we had mini caucus moments to discuss where we were at in our project, any individual setbacks/delays and also ideas about what we wanted to still incorporate. Although the personalities in our group were quite eclectic; the open and accepting environment was pretty much inherent in nature, and this led to the honest discussion of skills and vulnerabilities. It has been a pleasure to see our ideas come to fruition.
+Our team was able to effectively work in a cohesive and diplomatic manner. With the utilization of Slack as a communication platform, we were able to discuss strengths and weakness of each member and then formally assign tasks via Github. During class hours, we had mini caucus moments to discuss where we were at in our project, any individual setbacks/delays and also ideas about what we wanted to still incorporate. Although the personalities in our group were quite eclectic; the open and accepting environment was pretty much inherent in nature, and this led to the honest discussion of skills and vulnerabilities. It has been a pleasure to see our ideas come to fruition.
 
 Roadmap:
 With funding and extra time, additional user features such as, Yelp reviews, Goolge Maps and Air B&B would be included. 
