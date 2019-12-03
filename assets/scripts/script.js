@@ -31,7 +31,7 @@ function getLocationInputs(){
             locationArray.push(currentDest);
             let currentIndex = locationArray.length - 1;
             // Extract city name from user input and use in brewery get request
-            let queryURL = "http://www.mapquestapi.com/search/v2/radius?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&maxMatches=1&origin=" + currentDest;
+            let queryURL = "https://www.mapquestapi.com/search/v2/radius?key=QE84xF6fPwGPtqLDtyk7AmK1dcKhwF5g&maxMatches=1&origin=" + currentDest;
             axios.get(queryURL)
             .then(function(response) {
                 // console.log(response);
