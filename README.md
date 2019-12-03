@@ -47,6 +47,7 @@ Bulma
 https://cdn.jsdelivr.net/npm/bulma-extensions@4.0.0/dist/js/bulma-extensions.min.js
 
 Lodash
+https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.js
  
 APIs:
 Mapquest
