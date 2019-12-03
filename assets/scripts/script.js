@@ -11,6 +11,8 @@ const breweryButton = document.getElementById("brewery-button");
 
 let locationArray = [];
 
+// var start = b, i = 0; start < end; ++i, ++start
+
 // Function transforms state symbol returned by mapquest to state name understandable by brewery API
 function convertState(stateAbbv) {
     return stateNames[stateSymbols.indexOf(stateAbbv)];
@@ -21,8 +23,10 @@ function getLocationInputs(){
     clearBreweryList();
     breweryButton.classList.remove("hidden");
     locationArray = [];
-    for (let i = 0; i < destEls.length; i++) {
-        const currentDest = destEls[i].value;
+
+    // lodash foreach
+    _.forEach(destEls, function(dest){
+        const currentDest = dest.value;
         if (currentDest !== "") {
             locationArray.push(currentDest);
             let currentIndex = locationArray.length - 1;
@@ -35,11 +39,8 @@ function getLocationInputs(){
                 // Call getBreweries function to get the breweries at the current destination in the array
                 getBreweries(cityState,currentIndex); 
             });
-          
-
-            
-        } 
-    }
+        }; 
+    });
     getRoute(locationArray);
 }
 
