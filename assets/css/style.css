@@ -11,6 +11,10 @@ a:hover{
     display: none;
 }
 
+.is-danger{
+    margin-bottom: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: black;
@@ -69,6 +73,11 @@ a:hover{
         transition: background 1.5s;
     }
 }
+
+.level:nth-child(odd){
+    margin-bottom: 0;
+}
+
 .switch[type=checkbox] {
     position: relative;
 }
