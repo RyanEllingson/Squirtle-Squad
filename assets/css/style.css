@@ -15,6 +15,7 @@ a:hover{
     body {
         background-color: black;
     }
+    
     .is-divider[data-content]::after {
         background-color: black;
     }
@@ -67,6 +68,9 @@ a:hover{
         color: white;
         transition: background 1.5s;
     }
+}
+.switch[type=checkbox] {
+    position: relative;
 }
 
 .title {
