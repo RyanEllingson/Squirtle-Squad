@@ -53,56 +53,58 @@ function getBreweries(currentLocation, locationIndex) {
     let queryURL = "https://api.openbrewerydb.org/breweries?by_city=" + city + "&by_state=" + state;
     axios.get(queryURL)
     .then(function(response){
-        // console.log(response.data);
+        
         for (let i = 0; i < response.data.length; i++) {
             // console.log(response.data[i]);
-            // Create a new div with a class of "level"
-            let latLongString = response.data[i].latitude + "," + response.data[i].longitude;
-            // console.log(latLongString);
-            const newDiv = document.createElement("div");
-            newDiv.classList.add("level");
-            // Create a new a tag with innerHTML of whatever Brewery name the loop is currently on
-            const breweryNameTag = document.createElement("a");
-            breweryNameTag.innerHTML = response.data[i].name;
-            // Add an href attribute onto the a tag with the link leading to the brewery's website
-            breweryNameTag.setAttribute("href", response.data[i].website_url);
-            breweryNameTag.setAttribute("target", "_blank");
-            // Add a styling class onto the A tag
-            breweryNameTag.classList.add("brewery-link");
-            // Add new a tag onto the new div with a class of level
-            newDiv.append(breweryNameTag);
+            if (response.data[i].latitude !== null && response.data[i].longitude !== null) {
+                // Create a new div with a class of "level"
+                let latLongString = response.data[i].latitude + "," + response.data[i].longitude;
+                // console.log(latLongString);
+                const newDiv = document.createElement("div");
+                newDiv.classList.add("level");
+                // Create a new a tag with innerHTML of whatever Brewery name the loop is currently on
+                const breweryNameTag = document.createElement("a");
+                breweryNameTag.innerHTML = response.data[i].name;
+                // Add an href attribute onto the a tag with the link leading to the brewery's website
+                breweryNameTag.setAttribute("href", response.data[i].website_url);
+                breweryNameTag.setAttribute("target", "_blank");
+                // Add a styling class onto the A tag
+                breweryNameTag.classList.add("brewery-link");
+                // Add new a tag onto the new div with a class of level
+                newDiv.append(breweryNameTag);
 
-            const divCheckBox = document.createElement("div");
-            divCheckBox.classList.add("field");
+                const divCheckBox = document.createElement("div");
+                divCheckBox.classList.add("field");
 
-            const checkBoxInput = document.createElement("input");
-            checkBoxInput.classList.add("switch", "is-rtl", "is-outlined");
-            checkBoxInput.setAttribute("id", "toggle" + i + response.data[i].city);
-            checkBoxInput.setAttribute("name", "toggle");
-            checkBoxInput.setAttribute("type", "checkbox");
-            checkBoxInput.setAttribute("value","")
-            checkBoxInput.setAttribute("data-city",locationIndex);
-            checkBoxInput.setAttribute("data-latlong",latLongString);
-            // console.log(checkBoxInput.getAttribute("data-latlong"));
+                const checkBoxInput = document.createElement("input");
+                checkBoxInput.classList.add("switch", "is-rtl", "is-outlined");
+                checkBoxInput.setAttribute("id", "toggle" + i + response.data[i].city);
+                checkBoxInput.setAttribute("name", "toggle");
+                checkBoxInput.setAttribute("type", "checkbox");
+                checkBoxInput.setAttribute("value","")
+                checkBoxInput.setAttribute("data-city",locationIndex);
+                checkBoxInput.setAttribute("data-latlong",latLongString);
+                // console.log(checkBoxInput.getAttribute("data-latlong"));
 
-            const checkBoxLabel = document.createElement("label");
-            checkBoxLabel.setAttribute("for", "toggle"+ i + response.data[i].city);
-            checkBoxLabel.innerHTML = "";
+                const checkBoxLabel = document.createElement("label");
+                checkBoxLabel.setAttribute("for", "toggle"+ i + response.data[i].city);
+                checkBoxLabel.innerHTML = "";
 
-            divCheckBox.append(checkBoxInput);
-            divCheckBox.append(checkBoxLabel);
-            newDiv.append(divCheckBox);
+                divCheckBox.append(checkBoxInput);
+                divCheckBox.append(checkBoxLabel);
+                newDiv.append(divCheckBox);
 
-            // Create new p tage that will contain all the location and contact information about each brewery
-            const informationTag = document.createElement("p");
-            informationTag.classList.add("brewery-info");
-            // Add information to display to the p tag
-            informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
-            informationTag.classList.add("level");
-            // Add new level div to the div with an id of brewery-container
-            breweryDivEl.append(newDiv);
-            // Add new info tag to the newly created div
-            breweryDivEl.append(informationTag);
+                // Create new p tage that will contain all the location and contact information about each brewery
+                const informationTag = document.createElement("p");
+                informationTag.classList.add("brewery-info");
+                // Add information to display to the p tag
+                informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+                informationTag.classList.add("level");
+                // Add new level div to the div with an id of brewery-container
+                breweryDivEl.append(newDiv);
+                // Add new info tag to the newly created div
+                breweryDivEl.append(informationTag);
+            }
         }
         breweryButton.addEventListener("click",function() {
             const breweryToggleEls = document.querySelectorAll(".switch");
