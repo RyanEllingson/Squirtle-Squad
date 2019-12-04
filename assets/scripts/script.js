@@ -99,7 +99,14 @@ function getBreweries(currentLocation, locationIndex) {
                 const informationTag = document.createElement("p");
                 informationTag.classList.add("brewery-info");
                 // Add information to display to the p tag
-                informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+                // If there is a street address
+                if(response.data[i].street !== null){
+                    informationTag.innerHTML = response.data[i].street + " | " + response.data[i].city + ", " + response.data[i].state;
+                }
+                // Otherwise print without street address
+                else{
+                    informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+                }
                 informationTag.classList.add("level");
                 // Add new level div to the div with an id of brewery-container
                 breweryDivEl.append(newDiv);
