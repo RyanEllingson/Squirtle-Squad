@@ -56,7 +56,7 @@ function getBreweries(currentLocation, locationIndex) {
     .then(function(response){
         
         for (let i = 0; i < response.data.length; i++) {
-            console.log(response.data[i]);
+            // console.log(response.data[i]);
             if (response.data[i].latitude !== null && response.data[i].longitude !== null) {
                 // Create a new div with a class of "level"
                 let latLongString = response.data[i].latitude + "," + response.data[i].longitude;
