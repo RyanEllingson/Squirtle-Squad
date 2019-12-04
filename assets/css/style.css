@@ -92,7 +92,7 @@ a:hover{
 
 .brew-zone {
     overflow: auto;
-    height: 450px;
+    height: 480px;
 }
 
 .map-zone-title {
@@ -110,5 +110,5 @@ a:hover{
 .direction-zone {
     overflow-y: auto;
     overflow-wrap: break-word;
-    height: 450px;
+    height: 480px;
 }
