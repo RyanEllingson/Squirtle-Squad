@@ -56,7 +56,7 @@ function getBreweries(currentLocation, locationIndex) {
     .then(function(response){
         
         for (let i = 0; i < response.data.length; i++) {
-            // console.log(response.data[i]);
+            console.log(response.data[i]);
             if (response.data[i].latitude !== null && response.data[i].longitude !== null) {
                 // Create a new div with a class of "level"
                 let latLongString = response.data[i].latitude + "," + response.data[i].longitude;
@@ -99,7 +99,14 @@ function getBreweries(currentLocation, locationIndex) {
                 const informationTag = document.createElement("p");
                 informationTag.classList.add("brewery-info");
                 // Add information to display to the p tag
-                informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+                // If there is a street address
+                if(response.data[i].street !== null){
+                    informationTag.innerHTML = response.data[i].street + " | " + response.data[i].city + ", " + response.data[i].state;
+                }
+                // Otherwise print without street address
+                else{
+                    informationTag.innerHTML = response.data[i].city + ", " + response.data[i].state;
+                }
                 informationTag.classList.add("level");
                 // Add new level div to the div with an id of brewery-container
                 breweryDivEl.append(newDiv);
