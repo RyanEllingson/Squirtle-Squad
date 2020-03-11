@@ -24,16 +24,21 @@ Live site: https://ryanellingson.github.io/Squirtle-Squad/
 Description
 This repository was for creating an application to locate breweries while traveling. This is our first group project for our web development program. The Brew Cruz application will locate breweries in-between a starting location and ending location, with waypoints as an options. The user has the ability to input their current location, final destination and search results will produce a list of breweries (URL included when applicable) that are within those parameters. Additional functionality includes a map identifying the brewery results, turn by turn navigation with zoom capabilities and a responsive interface.
  
-Usage:
-The usage of this application is for the general public to easily locate breweries on their travel route.
- 
- 
-Images:
-![Starting layout concept](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/Screenshot%20(20).png)
- 
-![Finished view:](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/Screenshot%20(30).png)
+Using the app:
+To begin using the app, type the cities you would like to visit.  There must be at least 2, may be up to 7, and must be in the order in which you want to visit them.  Click the "Submit" button to generate the MapQuest route and the list of nearby breweries.
+![screenshot 1](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot1.JPG)
 
-![Mobile View:](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/Screenshot%20(29).png)
+When the route is generated, a map showing an overview of the route is displayed and a list of turn-by-turn directions is created.  Clicking on any of the individual steps will update the map to show that particular step.
+![screenshot 2](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot2.JPG)
+![screenshot 3](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot3.JPG)
+
+To get directions to breweries near the cities that were searched for, click the toggle switches next to each of the breweries in the brewery list.  Selected breweries will have the toggle positioned to the left and will be blue.  Once desired breweries have been chosen, click the "Get directions" button.  This will generate a new mapquest route through the cities and passing through each of the breweries selected.
+![screenshot 4](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot4.JPG)
+![screenshot 5](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot5.JPG)
+
+Not only does the list of breweries allow you to generate a MapQuest route to them, but each brewery item contains a link to that brewery's website.
+![screenshot 6](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot6.JPG)
+![screenshot 7](https://github.com/RyanEllingson/Squirtle-Squad/blob/master/assets/images/screenshot7.JPG)
  
  
 Installation:
